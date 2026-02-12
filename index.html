@@ -516,14 +516,28 @@
   </main>
 
   <footer>
-    <div class="container foot">
-      <div style="display:flex; gap:10px; align-items:center;">
-        <span class="dot" style="width:8px;height:8px;"></span>
-        <strong>Frontline Automations</strong>
-      </div>
+  <div class="container foot">
+    <div style="display:flex; gap:10px; align-items:center;">
+      <span class="dot" style="width:8px;height:8px;"></span>
+      <strong>Frontline Automations</strong>
+    </div>
+
+    <div style="display:flex; gap:14px; align-items:center; flex-wrap:wrap; justify-content:flex-end;">
+      <a href="/privacy.html" style="text-decoration:none; color:var(--muted2);">Privacy Policy</a>
+      <a href="/terms.html" style="text-decoration:none; color:var(--muted2);">Terms</a>
       <div>© <span id="y"></span> Frontline Automations</div>
     </div>
-  </footer>
+  </div>
+
+  <!-- SMS Compliance Footer (site-wide disclosure) -->
+  <div class="container" style="margin-top:12px; color:var(--muted2); font-size:12.5px; line-height:1.55;">
+    <strong>SMS Disclosure:</strong> If you opt in to receive text messages from <strong>Frontline Automations</strong>,
+    message frequency may vary. Message &amp; data rates may apply. Reply <strong>STOP</strong> to opt out,
+    <strong>HELP</strong> for help. Consent is not a condition of purchase.
+    See our <a href="/privacy.html" style="color:inherit;">Privacy Policy</a> and <a href="/terms.html" style="color:inherit;">Terms</a>.
+  </div>
+</footer>
+
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
