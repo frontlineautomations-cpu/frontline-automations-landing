@@ -1,124 +1,543 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Frontline Automations – AI Receptionist for Med Spas</title>
-<meta name="description" content="AI receptionist and automation systems for med spas and service businesses." />
-<style>
-:root{
---bg:#070709;--card:#0d0d10;--line:rgba(255,255,255,0.12);
---text:#fbfbfd;--muted:rgba(255,255,255,0.72);
---muted2:rgba(255,255,255,0.55);
---radius:16px;
-}
-*{box-sizing:border-box}
-body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:linear-gradient(180deg,#070709,#09090b);color:var(--text)}
-.container{width:min(960px,calc(100% - 40px));margin:0 auto}
-header{border-bottom:1px solid var(--line);background:rgba(8,8,10,.85);backdrop-filter:blur(8px);position:sticky;top:0;z-index:5}
-.header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
-.brand{font-weight:900}
-nav{display:flex;gap:14px}
-nav a{color:var(--muted);text-decoration:none;font-size:14px}
-nav a:hover{color:var(--text)}
-.actions{display:flex;gap:10px}
-.btn{border-radius:14px;padding:10px 14px;border:1px solid var(--line);background:transparent;color:var(--text);font-weight:700;cursor:pointer;text-decoration:none}
-.btn-primary{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.18)}
-main{padding:50px 0}
-section{padding:40px 0}
-h1{font-size:42px;margin:0}
-p.lead{color:var(--muted);margin-top:12px}
-.hero{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.card{border:1px solid var(--line);border-radius:var(--radius);background:rgba(255,255,255,.03);padding:16px}
-form{display:flex;flex-direction:column;gap:10px;margin-top:12px}
-input,textarea{border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.04);padding:10px;color:var(--text)}
-label.optin{display:flex;gap:10px;font-size:12px;color:var(--muted)}
-.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-@media(max-width:900px){
-.hero{grid-template-columns:1fr}
-.grid-3{grid-template-columns:1fr}
-nav{display:none}
-}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Frontline Automations — AI Receptionist & Workflow Automation</title>
+  <meta name="description" content="Frontline Automations builds AI receptionist and automation workflows that turn inbound calls into booked appointments for med spas and service businesses." />
+  <meta name="theme-color" content="#070709" />
+
+  <style>
+    :root{
+      --bg:#070709;
+      --bg2:#0b0b10;
+      --card:rgba(255,255,255,.04);
+      --card2:rgba(255,255,255,.06);
+      --line:rgba(255,255,255,.12);
+      --text:#fbfbfd;
+      --muted:rgba(255,255,255,.72);
+      --muted2:rgba(255,255,255,.55);
+      --shadow: 0 12px 40px rgba(0,0,0,.45);
+      --radius:18px;
+      --radius2:26px;
+      --max:1100px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(255,255,255,.12), transparent 60%),
+        radial-gradient(900px 500px at 90% 0%, rgba(255,255,255,.10), transparent 55%),
+        radial-gradient(900px 700px at 60% 110%, rgba(255,255,255,.08), transparent 60%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      overflow-x:hidden;
+    }
+
+    a{ color:inherit; }
+    .container{ width:min(var(--max), calc(100% - 40px)); margin:0 auto; }
+
+    /* NAV */
+    .nav{
+      position:sticky; top:0; z-index:20;
+      background:rgba(7,7,9,.55);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:14px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:900; letter-spacing:-.02em;
+    }
+    .dot{
+      width:10px; height:10px; border-radius:999px;
+      background: rgba(255,255,255,.9);
+      box-shadow: 0 0 0 6px rgba(255,255,255,.08);
+    }
+    .nav-links{
+      display:flex; gap:18px; align-items:center;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .nav-links a{ text-decoration:none; }
+    .nav-links a:hover{ color:var(--text); }
+
+    /* BUTTONS */
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      border-radius: 999px;
+      padding:12px 16px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.04);
+      color:var(--text);
+      font-weight:800;
+      text-decoration:none;
+      cursor:pointer;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.24); }
+    .btn:active{ transform: translateY(0px); }
+    .btn-primary{
+      background: rgba(255,255,255,.92);
+      color:#070709;
+      border-color: rgba(255,255,255,.92);
+    }
+    .btn-primary:hover{ background:#fff; border-color:#fff; }
+    .btn-ghost{
+      background: transparent;
+      border-color: rgba(255,255,255,.14);
+      color: var(--muted);
+    }
+    .btn-ghost:hover{ color:var(--text); background: rgba(255,255,255,.04); }
+
+    /* HERO */
+    .hero{
+      padding: 58px 0 28px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 22px;
+      align-items: start;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:8px 12px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      color:var(--muted);
+      font-size: 13px;
+    }
+    .badge span{
+      width:8px; height:8px; border-radius:999px;
+      background: rgba(255,255,255,.9);
+      opacity:.9;
+    }
+    h1{
+      margin:14px 0 0;
+      font-size: clamp(36px, 4.2vw, 56px);
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+    }
+    .subhead{
+      margin:14px 0 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.65;
+      max-width: 62ch;
+    }
+    .hero-actions{
+      display:flex; flex-wrap:wrap; gap:12px;
+      margin-top: 18px;
+      align-items:center;
+    }
+    .micro{
+      margin-top: 10px;
+      color: var(--muted2);
+      font-size: 12.5px;
+      line-height:1.5;
+    }
+
+    /* CARDS */
+    .card{
+      border-radius: var(--radius2);
+      border: 1px solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow: var(--shadow);
+    }
+    .card-inner{ padding: 18px; }
+    .card-title{
+      font-weight: 900;
+      letter-spacing: -0.01em;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px;
+    }
+    .card-title small{
+      font-weight:800;
+      color: var(--muted2);
+      font-size: 12px;
+      border:1px solid rgba(255,255,255,.12);
+      padding:6px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.03);
+    }
+    .form{
+      display:flex; flex-direction:column; gap:10px;
+      margin-top: 12px;
+    }
+    .row{ display:grid; grid-template-columns: 1fr 1fr; gap:10px; }
+    input, textarea, select{
+      width:100%;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      padding: 12px 12px;
+      outline:none;
+      transition: border-color .15s ease, background .15s ease;
+      font-size: 14px;
+    }
+    input:focus, textarea:focus, select:focus{
+      border-color: rgba(255,255,255,.28);
+      background: rgba(255,255,255,.06);
+    }
+    textarea{ min-height: 92px; resize: vertical; }
+
+    .optin{
+      display:flex; gap:10px; align-items:flex-start;
+      color: var(--muted2);
+      font-size: 12.5px;
+      line-height: 1.45;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+    }
+    .optin input{ width:auto; margin-top:2px; }
+
+    /* SECTIONS */
+    .section{
+      padding: 36px 0;
+    }
+    .section-head{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:16px;
+      margin-bottom: 14px;
+    }
+    .section-head h2{
+      margin:0;
+      font-size: 26px;
+      letter-spacing:-.02em;
+    }
+    .section-head p{
+      margin:0;
+      color: var(--muted);
+      max-width: 58ch;
+      font-size: 14.5px;
+      line-height: 1.65;
+    }
+
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .mini{
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      padding: 16px;
+    }
+    .mini h3{
+      margin:0;
+      font-size: 15px;
+      letter-spacing:-.01em;
+    }
+    .mini p{
+      margin:8px 0 0;
+      color: var(--muted);
+      font-size: 13.5px;
+      line-height: 1.6;
+    }
+
+    .steps{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    .step{
+      display:flex; gap:12px; align-items:flex-start;
+      padding: 14px 14px;
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+    }
+    .num{
+      width:30px; height:30px; border-radius: 999px;
+      display:flex; align-items:center; justify-content:center;
+      font-weight:900;
+      background: rgba(255,255,255,.92);
+      color:#070709;
+      flex: 0 0 auto;
+    }
+    .step strong{ display:block; }
+    .step span{ display:block; margin-top:4px; color: var(--muted); font-size: 13.5px; line-height:1.55; }
+
+    /* FAQ */
+    details{
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      padding: 14px 14px;
+    }
+    details + details{ margin-top:10px; }
+    summary{
+      cursor:pointer;
+      list-style:none;
+      font-weight:900;
+      letter-spacing:-.01em;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    details p{
+      margin:10px 0 0;
+      color: var(--muted);
+      font-size: 13.5px;
+      line-height:1.6;
+    }
+
+    /* FOOTER */
+    footer{
+      padding: 26px 0 34px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      color: var(--muted2);
+      font-size: 13px;
+    }
+    .foot{
+      display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 980px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .nav-links{ display:none; }
+      .row{ grid-template-columns: 1fr; }
+      .grid3{ grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
+
 <body>
+  <!-- NAV -->
+  <div class="nav">
+    <div class="container nav-inner">
+      <div class="brand"><span class="dot"></span> Frontline Automations</div>
 
-<header>
-<div class="container header-inner">
-<div class="brand">Frontline Automations</div>
-<nav>
-<a href="#features">Features</a>
-<a href="#demo">Demo</a>
-<a href="#contact">Contact</a>
-</nav>
-<div class="actions">
-<a class="btn btn-primary" href="https://calendly.com/frontlineautomations/30min" target="_blank">Book a Demo</a>
-</div>
-</div>
-</header>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#process">Process</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </div>
 
-<main class="container">
+      <div style="display:flex; gap:10px; align-items:center;">
+        <a class="btn btn-ghost" href="#contact">Request setup</a>
+        <a class="btn btn-primary" href="https://calendly.com/frontlineautomations/30min" target="_blank" rel="noopener noreferrer">Book a demo</a>
+      </div>
+    </div>
+  </div>
 
-<section class="hero">
-<div>
-<h1>Never miss a call. Never lose a lead.</h1>
-<p class="lead">AI receptionist + automation workflows that turn missed calls into booked consults for med spas and service businesses.</p>
-<div class="actions" style="margin-top:16px;">
-<a class="btn btn-primary" href="https://calendly.com/frontlineautomations/30min" target="_blank">Book a Demo</a>
-</div>
-</div>
+  <!-- HERO -->
+  <main class="container">
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="badge"><span></span> AI receptionist + automations for med spas & service businesses</div>
+          <h1>Turn inbound calls into booked appointments — automatically.</h1>
+          <p class="subhead">
+            Frontline installs an AI receptionist and follow-up workflows that respond instantly,
+            qualify leads, and get customers scheduled without your team living on the phone.
+          </p>
 
-<aside class="card">
-<div style="font-weight:900;">Request a Call</div>
-<form action="https://formsubmit.co/frontlineautomations@gmail.com" method="POST">
-<input type="hidden" name="_captcha" value="false">
-<input type="hidden" name="_subject" value="New Frontline Lead">
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://calendly.com/frontlineautomations/30min" target="_blank" rel="noopener noreferrer">Book a demo</a>
+            <a class="btn" href="#features">See what we install</a>
+          </div>
 
-<input type="text" name="name" placeholder="Name" required>
-<input type="email" name="email" placeholder="Email" required>
-<input type="text" name="business" placeholder="Business Name" required>
+          <div class="micro">
+            Typical setup in days, not weeks. Built to reduce missed calls, no-shows, and admin load.
+          </div>
+        </div>
 
-<label class="optin">
-<input type="checkbox" required>
-I agree to receive SMS updates. Reply STOP to opt out.
-</label>
+        <!-- LEAD FORM -->
+        <aside class="card" id="contact" aria-label="Lead form">
+          <div class="card-inner">
+            <div class="card-title">
+              <div>Request a setup call</div>
+              <small>Fast response</small>
+            </div>
 
-<button class="btn btn-primary" type="submit">Submit</button>
-</form>
-</aside>
-</section>
+            <form class="form" action="https://formsubmit.co/frontlineautomations@gmail.com" method="POST">
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_subject" value="New Frontline Lead" />
+              <input type="hidden" name="_template" value="table" />
 
-<section id="features">
-<h2>What We Do</h2>
-<div class="grid-3">
-<div class="card"><strong>AI Receptionist</strong><p class="lead">Answers every call instantly and books consults.</p></div>
-<div class="card"><strong>Automation Systems</strong><p class="lead">Reminders, follow-ups, and no-show reduction.</p></div>
-<div class="card"><strong>Lead Recovery</strong><p class="lead">Turn missed calls into revenue automatically.</p></div>
-</div>
-</section>
+              <div class="row">
+                <input name="name" placeholder="Full name" required />
+                <input type="email" name="email" placeholder="Email" required />
+              </div>
 
-<section id="demo">
-<h2>Live Demo</h2>
-<div class="card">
-<p class="lead">Upload your AI demo audio file here when ready.</p>
-<audio controls style="width:100%;">
-<source src="demo-audio.mp3" type="audio/mpeg">
-</audio>
-</div>
-</section>
+              <div class="row">
+                <input name="business" placeholder="Business name" required />
+                <input name="phone" placeholder="Phone (optional)" />
+              </div>
 
-<section id="contact">
-<h2>Ready to Automate?</h2>
-<div class="actions" style="margin-top:14px;">
-<a class="btn btn-primary" href="https://calendly.com/frontlineautomations/30min" target="_blank">Book a Demo</a>
-</div>
-</section>
+              <select name="industry" required>
+                <option value="" disabled selected>Industry</option>
+                <option>Med spa</option>
+                <option>Dental</option>
+                <option>Chiropractic</option>
+                <option>Home services</option>
+                <option>Other</option>
+              </select>
 
-</main>
+              <textarea name="notes" placeholder="What do you want automated? (calls, booking, follow-ups, no-shows, etc.)"></textarea>
 
-<footer style="border-top:1px solid var(--line);padding:20px 0;text-align:center;color:var(--muted2);">
-© 2026 Frontline Automations
-</footer>
+              <label class="optin">
+                <input type="checkbox" name="sms_opt_in" value="yes" required />
+                <span>
+                  I agree to receive SMS related to scheduling, reminders, and service updates. Message/data rates may apply.
+                  Reply <strong>STOP</strong> to opt out, <strong>HELP</strong> for help. Consent is not a condition of purchase.
+                </span>
+              </label>
 
+              <button class="btn btn-primary" type="submit">Send request</button>
+
+              <div class="micro" style="margin-top:2px;">
+                Prefer to skip forms? <a href="https://calendly.com/frontlineautomations/30min" target="_blank" rel="noopener noreferrer">Book directly here</a>.
+              </div>
+            </form>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="section" id="features">
+      <div class="section-head">
+        <h2>What we install</h2>
+        <p>
+          A clean, reliable system that captures leads, answers questions, and books appointments — without adding headcount.
+        </p>
+      </div>
+
+      <div class="grid3">
+        <div class="mini">
+          <h3>AI receptionist</h3>
+          <p>Answers calls instantly, handles FAQs, captures intent, and routes or schedules based on your rules.</p>
+        </div>
+        <div class="mini">
+          <h3>Automated booking + follow-ups</h3>
+          <p>Confirmation, reminders, reschedules, and no-show reduction sequences via text/email.</p>
+        </div>
+        <div class="mini">
+          <h3>Lead recovery</h3>
+          <p>Missed calls don’t disappear — they trigger immediate outreach to bring customers back.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="section" id="process">
+      <div class="section-head">
+        <h2>How it works</h2>
+        <p>Simple process. Tight implementation. Measurable outcome.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="num">1</div>
+          <div>
+            <strong>Discovery + script</strong>
+            <span>We map your services, policies, pricing ranges (optional), and ideal booking flow.</span>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="num">2</div>
+          <div>
+            <strong>Build + integrate</strong>
+            <span>We connect your call handling, calendar, and follow-up automations (SMS/email) with clean consent handling.</span>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="num">3</div>
+          <div>
+            <strong>Launch + optimize</strong>
+            <span>We go live, monitor conversations, and tune the workflow so bookings increase and admin load drops.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="section-head">
+        <h2>FAQ</h2>
+        <p>Quick answers to the questions we get most.</p>
+      </div>
+
+      <details>
+        <summary>Is this only for med spas?</summary>
+        <p>No — med spas are our primary focus, but the system works for any appointment-based or service business.</p>
+      </details>
+
+      <details>
+        <summary>Do I need to change my phone system?</summary>
+        <p>Usually no. We can work with your existing provider or help you route calls properly.</p>
+      </details>
+
+      <details>
+        <summary>How do you handle SMS consent?</summary>
+        <p>We implement clear opt-in language and STOP/HELP handling. Your workflows should only message opted-in contacts.</p>
+      </details>
+
+      <details>
+        <summary>What if the AI can’t answer something?</summary>
+        <p>It can route to a human, take a message, or send a booking link — depending on the scenario you choose.</p>
+      </details>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="section" style="padding-bottom: 54px;">
+      <div class="card">
+        <div class="card-inner" style="display:flex; justify-content:space-between; align-items:center; gap:14px; flex-wrap:wrap;">
+          <div>
+            <div style="font-weight:900; font-size:18px; letter-spacing:-.01em;">Want Frontline installed for your business?</div>
+            <div style="color:var(--muted); margin-top:6px; font-size:14px;">Book a quick demo or request a setup call above.</div>
+          </div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn" href="#contact">Request setup</a>
+            <a class="btn btn-primary" href="https://calendly.com/frontlineautomations/30min" target="_blank" rel="noopener noreferrer">Book a demo</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container foot">
+      <div style="display:flex; gap:10px; align-items:center;">
+        <span class="dot" style="width:8px;height:8px;"></span>
+        <strong>Frontline Automations</strong>
+      </div>
+      <div>© <span id="y"></span> Frontline Automations</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener("click", (e) => {
+        const href = a.getAttribute("href");
+        if (!href || href.length < 2) return;
+        const el = document.querySelector(href);
+        if (!el) return;
+        e.preventDefault();
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+  </script>
 </body>
 </html>
