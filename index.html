@@ -1,186 +1,124 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Frontline Automations – AI Receptionist & Automations for Med Spas</title>
-  <meta name="description" content="Frontline Automations: AI receptionist, lead capture, booking, and growth automations for med spas and service businesses." />
-  <style>
-    :root{
-      --bg:#070709;--card:#0d0d10;--line:rgba(255,255,255,0.12);
-      --text:#fbfbfd;--muted:rgba(255,255,255,0.72);
-      --muted2:rgba(255,255,255,0.55);
-      --radius:16px;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:linear-gradient(180deg,#070709,#09090b);color:var(--text)}
-    .container{width:min(960px,calc(100% - 40px));margin:0 auto}
-    header{border-bottom:1px solid var(--line);background:rgba(8,8,10,.85);backdrop-filter:blur(8px);position:sticky;top:0;z-index:5}
-    .header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:12px}
-    .brand{font-weight:900;letter-spacing:-.01em}
-    nav{display:flex;gap:14px;align-items:center}
-    nav a{color:var(--muted);font-size:14px;text-decoration:none}
-    nav a:hover{color:var(--text)}
-    .actions{display:flex;gap:10px;align-items:center}
-    .btn{border-radius:14px;padding:10px 14px;border:1px solid var(--line);background:transparent;color:var(--text);font-weight:700;cursor:pointer;text-decoration:none}
-    .btn-primary{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.18)}
-    main{padding:40px 0}
-    section{padding:30px 0}
-    h1{margin:0;font-size:40px;line-height:1.05}
-    p.lead{margin:12px 0 0;color:var(--muted);line-height:1.6}
-    .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:16px;align-items:start}
-    .card{border:1px solid var(--line);border-radius:var(--radius);background:rgba(255,255,255,.03);padding:16px}
-    form{display:flex;flex-direction:column;gap:10px;margin-top:12px}
-    input,textarea{width:100%;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.04);padding:10px;color:var(--text);outline:none}
-    label.optin{display:flex;gap:10px;align-items:flex-start;color:var(--muted);font-size:12px;line-height:1.4}
-    label.optin input{width:auto;margin-top:2px}
-    .grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-    @media(max-width:900px){
-      nav{display:none}
-      .hero{grid-template-columns:1fr}
-      .grid-3{grid-template-columns:1fr}
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Frontline Automations – AI Receptionist for Med Spas</title>
+<meta name="description" content="AI receptionist and automation systems for med spas and service businesses." />
+<style>
+:root{
+--bg:#070709;--card:#0d0d10;--line:rgba(255,255,255,0.12);
+--text:#fbfbfd;--muted:rgba(255,255,255,0.72);
+--muted2:rgba(255,255,255,0.55);
+--radius:16px;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:linear-gradient(180deg,#070709,#09090b);color:var(--text)}
+.container{width:min(960px,calc(100% - 40px));margin:0 auto}
+header{border-bottom:1px solid var(--line);background:rgba(8,8,10,.85);backdrop-filter:blur(8px);position:sticky;top:0;z-index:5}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+.brand{font-weight:900}
+nav{display:flex;gap:14px}
+nav a{color:var(--muted);text-decoration:none;font-size:14px}
+nav a:hover{color:var(--text)}
+.actions{display:flex;gap:10px}
+.btn{border-radius:14px;padding:10px 14px;border:1px solid var(--line);background:transparent;color:var(--text);font-weight:700;cursor:pointer;text-decoration:none}
+.btn-primary{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.18)}
+main{padding:50px 0}
+section{padding:40px 0}
+h1{font-size:42px;margin:0}
+p.lead{color:var(--muted);margin-top:12px}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.card{border:1px solid var(--line);border-radius:var(--radius);background:rgba(255,255,255,.03);padding:16px}
+form{display:flex;flex-direction:column;gap:10px;margin-top:12px}
+input,textarea{border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.04);padding:10px;color:var(--text)}
+label.optin{display:flex;gap:10px;font-size:12px;color:var(--muted)}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:900px){
+.hero{grid-template-columns:1fr}
+.grid-3{grid-template-columns:1fr}
+nav{display:none}
+}
+</style>
 </head>
 <body>
-  <header>
-    <div class="container header-inner">
-      <div class="brand">Frontline Automations</div>
-      <nav aria-label="Primary">
-        <a href="#features">Features</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#proof">Proof</a>
-        <a href="#demo">Demo</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <div class="actions">
-        <a class="btn" href="#lead">Get Leads</a>
-        <a class="btn btn-primary" href="https://calendly.com/frontlineautomations/30min" target="_blank" rel="noopener noreferrer">Book a Demo</a>
-      </div>
-    </div>
-  </header>
 
-  <main class="container">
-    <section class="hero">
-      <div>
-        <h1>Never miss a call. Never lose a lead.</h1>
-        <p class="lead">AI receptionist + automation workflows that turn missed calls into booked consults, especially for med spas.</p>
-        <div class="actions" style="margin-top:16px;">
-          <a class="btn btn-primary" href="https://calendly.com/frontlineautomations/30min" target="_blank" rel="noopener noreferrer">Book a Demo</a>
-          <a class="btn" href="#features">See features</a>
-        </div>
-      </div>
+<header>
+<div class="container header-inner">
+<div class="brand">Frontline Automations</div>
+<nav>
+<a href="#features">Features</a>
+<a href="#demo">Demo</a>
+<a href="#contact">Contact</a>
+</nav>
+<div class="actions">
+<a class="btn btn-primary" href="https://calendly.com/frontlineautomations/30min" target="_blank">Book a Demo</a>
+</div>
+</div>
+</header>
 
-      <aside class="card" id="lead">
-        <div style="font-weight:900;">Lead Capture Form</div>
-        <p style="color:var(--muted);font-size:14px;line-height:1.5;">Fill this out for a call and automation plan.</p>
+<main class="container">
 
-        <form action="https://formsubmit.co/frontlineautomations@gmail.com" method="POST">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_subject" value="New Frontline Automations Lead">
-          <input type="hidden" name="_template" value="table">
+<section class="hero">
+<div>
+<h1>Never miss a call. Never lose a lead.</h1>
+<p class="lead">AI receptionist + automation workflows that turn missed calls into booked consults for med spas and service businesses.</p>
+<div class="actions" style="margin-top:16px;">
+<a class="btn btn-primary" href="https://calendly.com/frontlineautomations/30min" target="_blank">Book a Demo</a>
+</div>
+</div>
 
-          <input type="text" name="name" placeholder="Name" required>
-          <input type="email" name="email" placeholder="Email" required>
-          <input type="tel" name="phone" placeholder="Phone (optional)">
-          <input type="text" name="business" placeholder="Med spa / business name" required>
-          <textarea name="notes" rows="3" placeholder="What do you need help with?"></textarea>
+<aside class="card">
+<div style="font-weight:900;">Request a Call</div>
+<form action="https://formsubmit.co/frontlineautomations@gmail.com" method="POST">
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_subject" value="New Frontline Lead">
 
-          <label class="optin">
-            <input type="checkbox" name="sms_opt_in" value="yes" required>
-            I agree to receive SMS messages for scheduling, reminders, and updates. Message/data rates may apply. Reply STOP to opt out. Consent is not required for purchase.
-          </label>
+<input type="text" name="name" placeholder="Name" required>
+<input type="email" name="email" placeholder="Email" required>
+<input type="text" name="business" placeholder="Business Name" required>
 
-          <button class="btn btn-primary" type="submit">Submit</button>
-        </form>
-      </aside>
-    </section>
+<label class="optin">
+<input type="checkbox" required>
+I agree to receive SMS updates. Reply STOP to opt out.
+</label>
 
-    <section id="features">
-      <h2>Features</h2>
-      <div class="grid-3">
-        <div class="card"><div style="font-weight:900;">AI Receptionist</div><div style="color:var(--muted);margin-top:8px;">Answer calls 24/7, qualify leads, book consults.</div></div>
-        <div class="card"><div style="font-weight:900;">Automation Workflows</div><div style="color:var(--muted);margin-top:8px;">Confirmations, reminders, no-show sequences, CRM updates.</div></div>
-        <div class="card"><div style="font-weight:900;">Compliance & Consent</div><div style="color:var(--muted);margin-top:8px;">Clear SMS opt-in language and best-practice implementation.</div></div>
-      </div>
-    </section>
+<button class="btn btn-primary" type="submit">Submit</button>
+</form>
+</aside>
+</section>
 
-    <section id="pricing">
-      <h2>Pricing</h2>
-      <div class="grid-3">
-        <div class="card">
-          <div style="font-weight:900;">Starter</div>
-          <div style="font-size:30px;font-weight:900;margin-top:6px;">$497/mo</div>
-          <div style="color:var(--muted);margin-top:8px;">AI receptionist + core lead capture workflow</div>
-        </div>
-        <div class="card">
-          <div style="font-weight:900;">Growth</div>
-          <div style="font-size:30px;font-weight:900;margin-top:6px;">$997/mo</div>
-          <div style="color:var(--muted);margin-top:8px;">Full automation suite + optimization</div>
-        </div>
-        <div class="card">
-          <div style="font-weight:900;">Enterprise</div>
-          <div style="font-size:30px;font-weight:900;margin-top:6px;">Custom</div>
-          <div style="color:var(--muted);margin-top:8px;">Multi-location + custom integrations</div>
-        </div>
-      </div>
-    </section>
+<section id="features">
+<h2>What We Do</h2>
+<div class="grid-3">
+<div class="card"><strong>AI Receptionist</strong><p class="lead">Answers every call instantly and books consults.</p></div>
+<div class="card"><strong>Automation Systems</strong><p class="lead">Reminders, follow-ups, and no-show reduction.</p></div>
+<div class="card"><strong>Lead Recovery</strong><p class="lead">Turn missed calls into revenue automatically.</p></div>
+</div>
+</section>
 
-    <section id="proof">
-      <h2>Proof</h2>
-      <div class="grid-3">
-        <div class="card"><div style="font-weight:900;">Owner</div><div style="color:var(--muted);margin-top:8px;">“Missed leads used to disappear. Now consults get booked immediately.”</div></div>
-        <div class="card"><div style="font-weight:900;">COO</div><div style="color:var(--muted);margin-top:8px;">“AI handles overflow and keeps the pipeline full.”</div></div>
-        <div class="card"><div style="font-weight:900;">Founder</div><div style="color:var(--muted);margin-top:8px;">“From ‘we’ll call you back’ to ‘you’re booked’ in minutes.”</div></div>
-      </div>
-    </section>
+<section id="demo">
+<h2>Live Demo</h2>
+<div class="card">
+<p class="lead">Upload your AI demo audio file here when ready.</p>
+<audio controls style="width:100%;">
+<source src="demo-audio.mp3" type="audio/mpeg">
+</audio>
+</div>
+</section>
 
-    <section id="demo">
-      <h2>Live demo</h2>
-      <div class="card">
-        <div style="font-weight:900;">AI Receptionist Demo</div>
-        <p style="color:var(--muted);margin-top:8px;">Upload your audio demo to your hosting and link it below when ready.</p>
-        <audio controls style="width:100%;margin-top:12px;">
-          <source src="demo-audio.mp3" type="audio/mpeg">
-        </audio>
-      </div>
-    </section>
+<section id="contact">
+<h2>Ready to Automate?</h2>
+<div class="actions" style="margin-top:14px;">
+<a class="btn btn-primary" href="https://calendly.com/frontlineautomations/30min" target="_blank">Book a Demo</a>
+</div>
+</section>
 
-    <section id="contact">
-      <h2>Ready to stop losing leads?</h2>
-      <p class="lead">Book a demo and we’ll show you a tailored workflow for your business.</p>
-      <div class="actions" style="margin-top:14px;">
-        <a class="btn btn-primary" href="https://calendly.com/frontlineautomations/30min" target="_blank" rel="noopener noreferrer">Book a Demo</a>
-        <a class="btn" href="#lead">Submit a lead</a>
-      </div>
-      <div class="card" style="margin-top:20px;">
-        <div style="font-weight:900;">SMS compliance + best practices</div>
-        <ul style="color:var(--muted);line-height:1.85;">
-          <li>Keep opt-in language near the submit button.</li>
-          <li>Include STOP/HELP keywords in messaging flows.</li>
-          <li>Use carrier-approved messaging tools for marketing campaigns.</li>
-        </ul>
-      </div>
-    </section>
-  </main>
+</main>
 
-  <footer style="border-top:1px solid var(--line);padding:20px 0;background:rgba(8,8,10,.9);">
-    <div class="container" style="display:flex;gap:12px;flex-wrap:wrap;justify-content:space-between;align-items:center;color:var(--muted2);font-size:13px;">
-      <div style="font-weight:900;">Frontline Automations</div>
-      <div>© <span id="y"></span></div>
-    </div>
-  </footer>
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener("click",e=>{
-        const id=a.getAttribute("href");
-        if(id.length<2)return;
-        const t=document.querySelector(id);
-        if(!t)return;
-        e.preventDefault();t.scrollIntoView({behavior:"smooth",block:"start"});
-      });
-    });
-  </script>
+<footer style="border-top:1px solid var(--line);padding:20px 0;text-align:center;color:var(--muted2);">
+© 2026 Frontline Automations
+</footer>
+
 </body>
 </html>
